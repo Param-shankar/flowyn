@@ -23,7 +23,19 @@
 /* ─── Reset ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+/* Lenis required base styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+html.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
 
 body {
   font-family: var(--font);
@@ -72,8 +84,10 @@ body {
 
 /* ─── Floating Pill Navbar ─── */
 .fy-header {
-  position: sticky;
-  top: 12px;
+  position: fixed;
+  width: 100%;
+  /* position: sticky; */
+  top: 2vh;
   z-index: 100;
   padding: 0 24px;
 }

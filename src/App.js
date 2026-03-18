@@ -1,6 +1,7 @@
 // App.js — Flowyn Landing Page | Struere Aesthetic + Aceternity UI
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import Lenis from "lenis";
 import "./App.css";
 import img from './image-removebg-preview.png'
 // eslint-disable-next-line no-unused-vars
@@ -121,9 +122,42 @@ function App() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    // Basic standard scroll listener
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    // Initialize Lenis for premium smooth scrolling
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easing
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Intercept anchor links for Lenis to scroll perfectly
+    const handleAnchorClick = (e) => {
+      const target = e.currentTarget.getAttribute("href");
+      if (target && target.startsWith("#")) {
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: -80 }); // offset for floating header
+      }
+    };
+
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    anchors.forEach((a) => a.addEventListener("click", handleAnchorClick));
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      anchors.forEach((a) => a.removeEventListener("click", handleAnchorClick));
+      lenis.destroy();
+    };
   }, []);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -134,17 +168,8 @@ function App() {
   };
 
   return (
-    <div className="flowyn-page">
-
-      {/* ── Announcement Banner ── */}
-      <div className="fy-banner">
-        <div className="fy-container">
-          <span className="fy-banner-dot" />
-          Soft Launch: India SMB Warehouses — Request early access today
-        </div>
-      </div>
-
-      {/* ── Floating Pill Navbar ── */}
+    <>
+     {/* ── Floating Pill Navbar ── */}
       <header className="fy-header">
         <motion.div
           className="fy-nav-inner"
@@ -163,6 +188,15 @@ function App() {
           </nav>
         </motion.div>
       </header>
+    <div className="flowyn-page">
+
+      {/* ── Announcement Banner ──
+      <div className="fy-banner">
+        <div className="fy-container">
+          <span className="fy-banner-dot" />
+          Soft Launch: India SMB Warehouses — Request early access today
+        </div>
+      </div> */}
 
       <main>
 
@@ -215,7 +249,7 @@ function App() {
               <SpotlightCard className="fy-dashboard-preview" style={{ marginTop: "72px" }}>
                 <div className="fy-preview-header">
                   <p>Warehouse Operations Live</p>
-                  <span>847 SKUs · 23 bays</span>
+                  <span>847 SKUs · g23 bays</span>
                 </div>
                 <div className="fy-metrics">
                   {[
@@ -506,7 +540,8 @@ function App() {
         <p>Warehouse workflows, made seamless.</p>
         <p>Serving SMB / SME warehouses · Soft launch 2026</p>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }
 
