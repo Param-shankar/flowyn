@@ -102,6 +102,7 @@ function FadeUp({ children, delay = 0, className = "" }) {
   );
 }
 
+
 /* ── Logo SVG ──────────────────────────────────────────────────── */
 function FlowynIcon({ size = 16, fill = "white" }) {
   return (
