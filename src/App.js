@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import "./App.css";
 import img from './image-removebg-preview.png'
-import { div } from "framer-motion/client";
 /* ── Aceternity: Floating particles background ──────────────────── */
 function SparkleCanvas() {
   const canvasRef = useRef(null);
