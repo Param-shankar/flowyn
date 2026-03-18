@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import "./App.css";
 import img from './image-removebg-preview.png'
+// eslint-disable-next-line no-unused-vars
 /* ── Aceternity: Floating particles background ──────────────────── */
 function SparkleCanvas() {
   const canvasRef = useRef(null);
