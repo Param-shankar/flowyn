@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import Lenis from "lenis";
 import "./App.css";
-import img from './image-removebg-preview.png'
 import imgdash from './dash.png';
 import emailjs from '@emailjs/browser';
 // eslint-disable-next-line no-unused-vars
@@ -110,7 +109,6 @@ function FadeUp({ children, delay = 0, className = "" }) {
 function FlowynIcon({ size = 16, fill = "white" }) {
   return (
     <div style={{ height: 100, width: 100 }}>
-      {/* <img src={img} alt="Flowyn Logo" /> */}
     </div>
   );
 }
