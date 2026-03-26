@@ -4,6 +4,8 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import Lenis from "lenis";
 import "./App.css";
 import img from './image-removebg-preview.png'
+import imgdash from './dash.png';
+import emailjs from '@emailjs/browser';
 // eslint-disable-next-line no-unused-vars
 /* ── Aceternity: Floating particles background ──────────────────── */
 function SparkleCanvas() {
@@ -164,7 +166,21 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("FLOWYN LEAD:", form);
-    setSubmitted(true);
+
+    // Replace the placeholders below with your actual EmailJS Service ID and Template ID
+    const serviceId = "service_f87txk5";
+    const templateId = "template_8j75pus";
+    const publicKey = "YhR5Yo9Roai1lPYB4";
+
+    emailjs.send(serviceId, templateId, form, publicKey)
+      .then((response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        setSubmitted(true);
+      })
+      .catch((err) => {
+        console.log("FAILED...", err);
+        alert("Something went wrong while sending your request. Please try again.");
+      });
   };
 
   return (
@@ -228,8 +244,7 @@ function App() {
               transition={{ duration: 0.6, delay: 0.25 }}
             >
               Flowyn is a light operations platform that models your warehouse workflows
-              exactly — organize inventory, define picking logic, and automate dispatch
-              decisions without forcing your team into rigid WMS constraints.
+              exactly organize workflow and define picking logic without forcing your team into rigid WMS constraints.
             </motion.p>
 
             <motion.a
@@ -248,7 +263,9 @@ function App() {
             <FadeUp delay={0.2}>
               <SpotlightCard className="fy-dashboard-preview" style={{ marginTop: "72px" }}>
                 <div className="fy-preview-header">
-                  <p>Warehouse Operations Live</p>
+                    <img className="imgdash" src={imgdash } />
+
+                    {/*   <p>Warehouse Operations Live</p>
                   <span>847 SKUs · g23 bays</span>
                 </div>
                 <div className="fy-metrics">
@@ -292,7 +309,7 @@ function App() {
                         </tr>
                       ))}
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </SpotlightCard>
             </FadeUp>
@@ -312,10 +329,10 @@ function App() {
 
             <div className="fy-functions">
               {[
-                { num: "01", icon: "📦", title: "Inventory Organization",  desc: "Structure SKUs, locations, and stock levels with clear relationships and real-time accuracy." },
-                { num: "02", icon: "⚙️", title: "Workflow Logic",          desc: "Create, update, and route picking/packing tasks dynamically — without breaking your daily flow." },
-                { num: "03", icon: "🔍", title: "Operations Visibility",   desc: "Search, filter, and track every order and bay instantly across all shifts." },
-                { num: "04", icon: "🚀", title: "Smart Dispatch",          desc: "Detect bottlenecks, surface exceptions, and recommend actions using warehouse intelligence." },
+                // { num: "01", icon: "📦", title: "Inventory Organization",  desc: "Structure SKUs, locations, and stock levels with clear relationships and real-time accuracy." },
+                { num: "01", icon: "⚙️", title: "Workflow Logic",          desc: "Create, update, and route picking/packing tasks dynamically — without breaking your daily flow." },
+                { num: "02", icon: "🔍", title: "Operations Visibility",   desc: "Search, filter, and track every order and bay instantly across all shifts." },
+                { num: "03", icon: "🚀", title: "Smart Dispatch",          desc: "Detect bottlenecks, surface exceptions, and recommend actions using warehouse intelligence." },
               ].map((fn, i) => (
                 <FadeUp key={fn.num} delay={i * 0.08}>
                   <div className="fy-function">
@@ -415,7 +432,7 @@ function App() {
                 {
                   n: "02",
                   title: "Define your logic",
-                  desc: "Map your picking, packing, and dispatch rules in a centralized engine that runs consistently across all shifts.",
+                  desc: "Add your picking, packing, and dispatch rules in a centralized engine that runs consistently across all shifts.",
                 },
                 {
                   n: "03",
@@ -535,7 +552,6 @@ function App() {
       <footer className="fy-footer">
         <div className="fy-footer-logo">
           <div className="fy-footer-icon"><FlowynIcon size={14} /></div>
-          Flowyn
         </div>
         <p>Warehouse workflows, made seamless.</p>
         <p>Serving SMB / SME warehouses · Soft launch 2026</p>
