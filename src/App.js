@@ -321,7 +321,7 @@ function App() {
           <div className="fy-container">
             <FadeUp>
               <div className="fy-section-label">Core capabilities</div>
-              <h2 className="fy-section-title">Every warehouse performs<br />four core functions.</h2>
+              <h2 className="fy-section-title">Every warehouse performs<br />Three core functions.</h2>
               <p className="fy-section-desc">
                 Flowyn strengthens and automates the fundamental operations every SMB warehouse already performs.
               </p>
@@ -404,7 +404,60 @@ function App() {
             </div>
           </div>
         </section>
+        <section className="fy-screens" id="screens">
+          <div className="fy-container">
+            <FadeUp>
+              <div className="fy-section-label">Hardware integration</div>
+              <h2 className="fy-section-title">Flowyn Status Screens</h2>
+              <p className="fy-screens-subtitle">
+                Turn any TV into a live warehouse command center. Plug in, power on, and your operations light up in real time.
+              </p>
+            </FadeUp>
 
+            <div className="fy-screens-content">
+              <FadeUp delay={0.1}>
+                <div className="fy-screens-text">
+                  <p className="fy-screens-hero">
+                    Flowyn ships with plug‑and‑play status screens so your floor is never flying blind. Just connect our tiny box to any HDMI TV or monitor, hook it to Wi‑Fi, and your live Flowyn dashboard shows up instantly. The same cloud view your team sees in the browser now lives on big screens across your warehouse—picks, putaways, and bottlenecks update in real time, no IT project required.
+                  </p>
+                  
+                  <ul className="fy-screens-bullets">
+                    {[
+                      "Works with any HDMI screen: TVs, wall displays, PC monitors.",
+                      "Cloud-native: runs your Flowyn dashboard directly from the web.",
+                      "5‑minute setup: plug in power and HDMI, connect to Wi‑Fi/LAN.",
+                      "Auto-refresh and always-on mode for shift-long visibility.",
+                      "Perfect for docks, packing stations, and control desks."
+                    ].map((bullet, i) => (
+                      <li key={i}>
+                        <span className="fy-check-icon fy-accent-icon">✓</span>
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </FadeUp>
+
+              <div className="fy-screens-cards">
+                <FadeUp delay={0.15}>
+                  <SpotlightCard className="fy-screen-card">
+                    <div className="fy-screen-card-icon">📺</div>
+                    <h3>Flowyn Screen Box</h3>
+                    <p>A pre-configured device that boots straight into your Flowyn dashboard on any HDMI display.</p>
+                  </SpotlightCard>
+                </FadeUp>
+                <FadeUp delay={0.25}>
+                  <SpotlightCard className="fy-screen-card">
+                    <div className="fy-screen-card-icon">🔄</div>
+                    <h3>Everywhere in sync</h3>
+                    <p>What you see in Flowyn on your laptop is exactly what shows up on the big screen—no duplicate configs.</p>
+                  </SpotlightCard>
+                </FadeUp>
+              </div>
+            </div>
+          </div>
+          </section>
+          
         {/* ── HOW IT WORKS ── */}
         <section className="fy-how" id="how">
           <div className="fy-container">
@@ -476,6 +529,9 @@ function App() {
             </FadeUp>
           </div>
         </section>
+
+        {/* ── STATUS SCREENS ── */}
+        
 
         {/* ── CONTACT ── */}
         <section className="fy-contact" id="contact">

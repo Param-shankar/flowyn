@@ -752,6 +752,108 @@ body {
 
 .fy-auto-val { color: rgba(255,255,255,0.75); }
 
+/* ─── Section: Status Screens ─── */
+.fy-screens {
+  padding: 100px 0;
+  background: var(--bg-alt);
+}
+
+.fy-screens-subtitle {
+  font-size: 20px;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.5;
+  margin-bottom: 60px;
+  font-weight: 500;
+}
+
+.fy-screens-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.fy-screens-hero {
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.fy-screens-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fy-screens-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.fy-accent-icon {
+  background: rgba(255, 79, 0, 0.1) !important;
+  color: var(--accent) !important;
+}
+
+.fy-screens-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.fy-screen-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.fy-screen-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.06);
+  border-color: rgba(255,79,0,0.2);
+}
+
+/* Spotlight overlay reuse */
+.fy-screen-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(400px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,79,0,0.05), transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fy-screen-card-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.fy-screen-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.fy-screen-card p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* ─── Section: Contact ─── */
 .fy-contact {
   padding: 100px 0;
@@ -915,6 +1017,7 @@ body {
 @media (max-width: 900px) {
   .fy-functions { flex-wrap: wrap; }
   .fy-how-grid  { grid-template-columns: 1fr; }
+  .fy-screens-content { grid-template-columns: 1fr; gap: 48px; }
   .fy-automation { flex-direction: column; gap: 24px; }
 }
 
