@@ -110,7 +110,7 @@ function FadeUp({ children, delay = 0, className = "" }) {
 function FlowynIcon({ size = 16, fill = "white" }) {
   return (
     <div style={{ height: 100, width: 100 }}>
-      <img src={img} alt="Flowyn Logo" />
+      {/* <img src={img} alt="Flowyn Logo" /> */}
     </div>
   );
 }
