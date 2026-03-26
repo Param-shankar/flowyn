@@ -263,7 +263,7 @@ function App() {
             <FadeUp delay={0.2}>
               <SpotlightCard className="fy-dashboard-preview" style={{ marginTop: "72px" }}>
                 <div className="fy-preview-header">
-                    <img className="imgdash" src={imgdash }  alt="image of dashboard"/>
+                    <img className="imgdash" src={imgdash }  alt="flowyn of dashboard"/>
 
                     {/*   <p>Warehouse Operations Live</p>
                   <span>847 SKUs · g23 bays</span>
